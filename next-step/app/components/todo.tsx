@@ -1,20 +1,25 @@
-// "use client";
+"use client";
 
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-// export default function Todo() {
-//     const [todo, setTodo] = useState({});
+export default function Todo() {
+    const [todo, setTodo] = useState<any>({});
 
-//     useEffect(async () => {
-//         const response = await fetch(
-//             "https://jsonplaceholder.typicode.com/todos/1");
-//         const result = setTodo(value: setStateAction<{}>): void {;
-//         setTodo(result);
-//     }, []);
+    useEffect(() => {
+        const fetchTodo = async () => {
+            const response = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            const result = await response.json();
+            setTodo(result);
+        };
 
-//     return (
-//         <div>
-//             {todo.title}
-//         </div>
-//     );
-// }
+        fetchTodo();
+    }, []);
+
+    return (
+        <div>
+            {todo.title}
+        </div>
+    );
+}

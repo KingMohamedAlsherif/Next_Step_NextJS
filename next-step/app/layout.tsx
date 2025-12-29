@@ -22,20 +22,38 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  }: Readonly<{
-    children: React.ReactNode;
-    }>) {
-      return (
-          <html lang="en">
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900`}
       >
-        <nav style={{ width: "100%", display: "flex", gap: "20px", padding: "20px" }}>
-          <Link href="/">Home</Link>
-          <Link href="/mems">Mems</Link>
-          <Link href="/wow">Wow</Link>
+        <nav className="w-full bg-white dark:bg-gray-800 shadow-sm">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16 items-center">
+              <div className="flex-shrink-0 flex items-center">
+                <span className="font-bold text-xl text-indigo-600 dark:text-indigo-400">NextStep</span>
+              </div>
+              <div className="flex space-x-8">
+                <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</Link>
+                <Link href="/mems" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Mems</Link>
+                <Link href="/wow" className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Wow</Link>
+              </div>
+            </div>
+          </div>
         </nav>
-        {children}
+        <main className="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+          {children}
+        </main>
+        <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto">
+          <div className="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+              &copy; {new Date().getFullYear()} NextStep App. All rights reserved.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   );
